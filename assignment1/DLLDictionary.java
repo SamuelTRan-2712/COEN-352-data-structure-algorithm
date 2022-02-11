@@ -17,11 +17,21 @@ public class DLLDictionary<Key,E> implements ADTDictionary<Key,E> {
 		// TODO Auto-generated method stub
 		DLink<Key> tempKlist = klist.curr; // save the node where curr is pointing at to tempKlist
 		klist.next(); //move the cursor to the next element but tempKlist is not changed
-		tempKlist.setNext(new DLink<Key>(k,tempKlist, klist.curr)); //insert a new node of type Key, its previous element is tempKList and its next is where curr is pointing at
+		DLink<Key> tempNodeKlist = new DLink<Key>(k,tempKlist, klist.curr); // create a new node named tempNodeKlist where its next element is curr and previous element is tempKlist
+		tempNodeKlist.setNext(klist.curr); // set TempNodeKlist to point to curr
+		tempKlist.setNext(tempNodeKlist); //set tempKlist to point to tempNodeKlist
+		tempNodeKlist.setPrev(tempKlist); //since its DLList, we need to set tempNodeKlist to point to its previous element tempKlist
+		klist.curr.setPrev(tempNodeKlist); //again, we have to set curr to point to its previous elemnt, which is tempNodeKlist now
 		
 		DLink<E> tempVlist = vlist.curr; // save the node where curr is pointing at to tempVlist
 		vlist.next(); //move the cursor to the next element but tempVlist is not changed
 		tempVlist.setNext(new DLink<E>(e,tempVlist, vlist.curr)); //insert a new node of type E, its previous element is tempVList and its next is where curr is pointing at
+		DLink<E> tempNodeVlist = new DLink<E>(e,tempVlist, vlist.curr); // create a new node named tempNodeVlist where its next element is curr and last element is tempVlist
+		tempNodeVlist.setNext(vlist.curr); //set tempNodeVlist to point to curr 
+		tempVlist.setNext(tempNodeVlist); //set tempVlist to point to tempNodeVlist
+		tempNodeVlist.setPrev(tempVlist); //since its DLList, we need to set tempNodeVlist to point to its previous element tempVlist
+		vlist.curr.setPrev(tempNodeVlist); //again, we have to set curr to point to its previous element, which is tempNodeVlist now
+		
 	}
 
 	@Override
