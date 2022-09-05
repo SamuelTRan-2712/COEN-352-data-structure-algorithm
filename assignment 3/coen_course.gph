@@ -1,0 +1,34 @@
+#Graph for assignment 3 from coen212 to coen498
+27			#number of vertices 
+D			#Directed graph
+0 4
+0 5
+0 19
+0 24
+1 5
+1 8
+2 3
+2 4
+3 8
+3 19
+3 20
+4 6
+4 7
+4 9
+4 12
+5 6
+5 7
+5 13
+7 15
+7 22
+8 9 
+8 12
+8 18
+9 10
+9 11
+9 16
+9 17
+10 15
+11 21
+11 22
+12 25
